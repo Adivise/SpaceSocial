@@ -13,7 +13,7 @@
 ## 📎 Requirements
 
 1. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
-2. MongaDB **[Download](https://www.mongodb.com/try/download/community)** (switch back to default lavalink!)
+2. MongaDB **[Download](https://www.mongodb.com/try/download/community)**
 
 ## 📚 Installation
 
