@@ -12,8 +12,9 @@
 
 ## 📎 Requirements
 
-1. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
-2. MongaDB **[Download](https://www.mongodb.com/try/download/community)**
+1. Node.js Version 16+ **[Download](https://nodejs.org/en/download/)**
+2. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
+3. MongaDB **[Download](https://www.mongodb.com/try/download/community)**
 
 ## 📚 Installation
 
