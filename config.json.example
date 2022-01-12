@@ -1,0 +1,9 @@
+{
+    "TOKEN": "TOKEN_HERE",
+    "PREFIX": "s#",
+    "CREATE_CLAN_ROLE": "SpaceClan",
+    "MONGO_URI": "mongodb://127.0.0.1:27017/clans",
+    "MEMBER_LIMIT": 10,
+    "DESC_LIMIT": 150,
+    "ALLIANCE_LIMIT": 5
+}
