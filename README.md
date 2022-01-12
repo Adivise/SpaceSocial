@@ -1,8 +1,7 @@
 ## 📑 Short Feature
-- [x] Create Clan
-- [x] Add Members 
-- [x] Need Role (to create clan!)
-- [x] Modified you clan
+- [x] Create Clan (Need Role)
+- [x] Add Members (maxed 10!)
+- [x] Modified you clan (Only Owner)
 - [x] Easy to use
 
 ## 🚨 Have a Problem
