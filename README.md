@@ -1,5 +1,6 @@
 ## 📑 Short Feature
 - [x] Create Clan
+- [x] Add Members 
 - [x] Need Role (to create clan!)
 - [x] Modified you clan
 - [x] Easy to use
