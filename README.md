@@ -1,6 +1,6 @@
 ## 📑 Short Feature
-- [x] Create Clan (Need Role)
-- [x] Add Members (maxed 10!)
+- [x] Create Clan (Need Role! can set in `config.json`)
+- [x] Add Members (maxed unlimited! can set in `config.json`)
 - [x] Modified you clan (Only Owner)
 - [x] Easy to use
 
