@@ -3,14 +3,14 @@
 > Project List [Click Here!](https://github.com/Adivise/SpaceSocial/projects/1)
 
 ## 📑 Short Feature
-[x] SlashCommands
-[x] Economy System
-[x] Clan System
-[x] Marry System
-[x] Gacha System
-[x] Auction System
-[x] Can config all System
-[x] Easy to use!
+- [x] SlashCommands
+- [x] Economy System
+- [x] Clan System
+- [x] Marry System
+- [x] Gacha System
+- [x] Auction System
+- [x] Can config all System
+- [x] Easy to use!
 
 ## 🚨 Have a Problem
 
@@ -47,7 +47,9 @@ MONGO_URI=mongodb://127.0.0.1:27017/spacesocial
 ## 🔩 Features & Commands
 
 > Note: The default prefix is '/' (SlashCommands)
+
 > Your can settings all in Folder `Settings`
+
 > Optional: [] | Required: ()
 
 💫 **General Commands!** 
