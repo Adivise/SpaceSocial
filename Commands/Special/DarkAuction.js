@@ -29,6 +29,8 @@ module.exports = {
     run: async (interaction, client) => {
         await interaction.deferReply({ ephemeral: false });
 
+        if (!interaction.member.permissions.has('MANAGE_GUILD')) return interaction.editReply(`You need the \`Manage Server\` permission to use this command.`);
+
         if (interaction.options.getSubcommand() === "start") {
 
                 const role = interaction.options.getRole("role");
