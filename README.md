@@ -3,14 +3,14 @@
 > Project List [Click Here!](https://github.com/Adivise/SpaceSocial/projects/1)
 
 ## 📑 Short Feature
-[x] SlashCommands
-[x] Economy System
-[x] Clan System
-[x] Marry System
-[x] Gacha System
-[x] Auction System
-[x] Can config all System
-[x] Easy to use!
+- [x] SlashCommands
+- [x] Economy System
+- [x] Clan System
+- [x] Marry System
+- [x] Gacha System
+- [x] Auction System
+- [x] Can config all System
+- [x] Easy to use!
 
 ## 🚨 Have a Problem
 
@@ -47,7 +47,9 @@ MONGO_URI=mongodb://127.0.0.1:27017/spacesocial
 ## 🔩 Features & Commands
 
 > Note: The default prefix is '/' (SlashCommands)
+
 > Your can settings all in Folder `Settings`
+
 > Optional: [] | Required: ()
 
 💫 **General Commands!** 
@@ -63,10 +65,10 @@ MONGO_URI=mongodb://127.0.0.1:27017/spacesocial
 - `/pay (user) (amount)` - Pay someone
 - `/rob (user)` - Rob someone (In Progress, But Already Add!) **(Beta)**
 - `/roulette (bet) (place)` - Play Roulette
-- `/Withdraw ([number] - [all])` - Withdraw money
-- `/Deposit ([number] - [all])` - Deposit money
-- `/Work` - Work and earn money
-- `/Crime` - Crime and earn money
+- `/withdraw ([number] - [all])` - Withdraw money
+- `/deposit ([number] - [all])` - Deposit money
+- `/work` - Work and earn money
+- `/crime` - Crime and earn money
 
 🚻 **Clan Commands!** (Beta)
 - `/clan create (name)` - Create a clan (Use money to create)
