@@ -2,6 +2,10 @@
 
 > Project List [Click Here!](https://github.com/Adivise/SpaceSocial/projects/1)
 
+## ⁉ WARNING
+
+> This project is not complete have a bug sure!
+
 ## 📑 Short Feature
 - [x] SlashCommands
 - [x] Economy System
