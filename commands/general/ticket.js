@@ -39,12 +39,12 @@ module.exports = {
             .setAuthor({ name: userTag, iconURL: avatarURL })
             .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
             .setDescription(`Use the \`/leaderboard\` command to view your rank.`)
-            .addField(`${tickets[0]}`, `\`${ticket.common_ticket} ⚪\``, true)
-            .addField(`${tickets[1]}`, `\`${ticket.uncommon_ticket} 🟢\``, true)
-            .addField(`${tickets[2]}`, `\`${ticket.rare_ticket} 🔵\``, true)
-            .addField(`${tickets[3]}`, `\`${ticket.epic_ticket} 🟣\``, true)
-            .addField(`${tickets[4]}`, `\`${ticket.legendary_ticket} 🟡\``, true)
-            .addField(`${tickets[5]}`, `\`${ticket.mythical_ticket} 🔴\``, true)
+            .addFields({ name: `${tickets[0]}`, value: `\`${ticket.common_ticket} ⚪\``, inline: true })
+            .addFields({ name: `${tickets[1]}`, value: `\`${ticket.uncommon_ticket} 🟢\``, inline: true })
+            .addFields({ name: `${tickets[2]}`, value: `\`${ticket.rare_ticket} 🔵\``, inline: true })
+            .addFields({ name: `${tickets[3]}`, value: `\`${ticket.epic_ticket} 🟣\``, inline: true })
+            .addFields({ name: `${tickets[4]}`, value: `\`${ticket.legendary_ticket} 🟡\``, inline: true })
+            .addFields({ name: `${tickets[5]}`, value: `\`${ticket.mythical_ticket} 🔴\``, inline: true })
             .setFooter({ text: `Total Tickets: ${TotalTickets}`, iconURL: client.user.avatarURL({ format: "png", dynamic: true, size: 512 }) })
             .setTimestamp();
 

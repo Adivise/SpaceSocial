@@ -819,7 +819,7 @@ module.exports = {
             if (!clan) return interaction.editReply("You are not the clan owner");
     
             const role = interaction.guild.roles.cache.find(role => role.name === `${clan.clan_name}`);
-            if (role) return interaction.editReply("You already have this clan role");
+            if (role) return interaction.editReply("You already have clan role");
     
             if (clan.clan_money < config.clan.role_cost) return interaction.editReply(`You need at least \`$${numberWithCommas(config.clan.role_cost)}\` coins to buy a clan role`);
             if (clan.clan_level < config.clan.role_level) return interaction.editReply(`You need to be level \`${config.clan.role_level}\` to buy a clan role`);
@@ -830,7 +830,7 @@ module.exports = {
             await interaction.guild.roles.create({
                 name: `${clan.clan_name}`,
                 color: args,
-                permissions: ["VIEW_CHANNEL"],
+                permissions: ["ViewChannel"],
                 mentionable: true,
             }).then(async (role) => {
                 await clan.updateOne({ clan_role: role.id }).then( async () => {
@@ -873,15 +873,15 @@ module.exports = {
                 permissionOverwrites: [
                     {
                         id: interaction.guild.roles.everyone,
-                        deny: ['VIEW_CHANNEL', 'CONNECT'],
+                        deny: ['ViewChannel', 'Connect'],
                     },
                     {
                         id: clan.clan_owner,
-                        allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK'],
+                        allow: ['ViewChannel', 'Connect', 'Speak'],
                     },
                     {
                         id: clan.clan_role,
-                        allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK'],
+                        allow: ['ViewChannel', 'Connect', 'Speak'],
                     }
                 ]
             }).then(async (channel) => {

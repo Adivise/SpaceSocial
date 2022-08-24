@@ -31,19 +31,7 @@ module.exports = {
         await client.CreateAndUpdate(interaction.guild.id, member.id) /// Can find this module in Handlers/loadCreate.js
 
         const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
-
-        /// CHECK IF USER EXISTS
         const target = await Member.findOne({ guild_id: interaction.guild.id, user_id: member.id });
-        if (!target) {
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                .setDescription(`\`${member.tag}\` *is not in the database*`)
-                .setTimestamp();
-
-                interaction.editReply({ embeds: [embed] });
-            return;
-        }
 
         if (args > user.money) {
             const embed = new EmbedBuilder()
@@ -64,31 +52,31 @@ module.exports = {
 
             interaction.editReply({ embeds: [embed] });
 
-            /// SET YOUR MONEY TO 0
-            user.money = 0;
-            await user.save();
-
             /// SET YOUR MONEY TO TARGET MONEY
             target.money += user.money;
             await target.save();
 
-        } else { /// PAY AMOUNT
-            
+            /// SET YOUR MONEY TO 0
+            user.money = 0;
+            await user.save();
+        } 
+
+        if (args == parseInt(args)) { /// PAY AMOUNT
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
                 .setDescription(`You have paid \`$${numberWithCommas(args)}\` into ${member}.`)
                 .setTimestamp();
 
-            interaction.editReply({ embeds: [embed] });
-
-            /// - YOUR MONEY
-            user.money -= args;
-            await user.save();
+           interaction.editReply({ embeds: [embed] });
 
             /// + TARGET MONEY
-            target.money += args;
+            target.money += parseInt(args);
             await target.save();
+            
+            /// - YOUR MONEY
+            user.money -= parseInt(args);
+            await user.save();
         }
     }
 }
