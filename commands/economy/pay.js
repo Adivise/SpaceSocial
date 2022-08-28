@@ -21,7 +21,17 @@ module.exports = {
     run: async (interaction, client) => {
         await interaction.deferReply({ ephemeral: false });
         const args = interaction.options.getString("amount");
-        if(args != parseInt(args) && args != "all") return interaction.editReply("Please provide a valid amount or all");
+
+        const filters = [
+            "+",
+            "-"
+        ];
+
+        for(const message in filters) {
+            if (args.includes(filters[message])) return interaction.editReply("You can't do that!");
+        }
+
+        if (args != parseInt(args) && args != "all") return interaction.editReply("Please provide a valid amount or all");
 
         const member = interaction.options.getUser("user");
         if (member.id === interaction.user.id) return interaction.editReply("You can't pay yourself.");
@@ -33,6 +43,16 @@ module.exports = {
         const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
         const target = await Member.findOne({ guild_id: interaction.guild.id, user_id: member.id });
 
+        if (user.money == 0) {
+            const embed = new EmbedBuilder()
+                .setColor(client.color)
+                .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
+                .setDescription(`You don't have enough money to pay.`)
+                .setTimestamp();
+
+            return interaction.editReply({ embeds: [embed] });
+        }
+
         if (args > user.money) {
             const embed = new EmbedBuilder()
                 .setColor(client.color)
@@ -43,7 +63,7 @@ module.exports = {
             return interaction.editReply({ embeds: [embed] });
         }
 
-        if (args == 'all') { /// PAY ALL
+        if (args.toLowerCase() == 'all') { /// PAY ALL
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })

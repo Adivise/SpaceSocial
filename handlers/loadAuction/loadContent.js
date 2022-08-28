@@ -43,6 +43,21 @@ client.on("messageCreate", async (message) => {
             //// Check if content is number not number and return
             if (isNaN(content)) return;
 
+            const filters = [
+                "+",
+                "-"
+            ];
+    
+            for (const message in filters) {
+                if (content.includes(filters[message])) {
+                    message.channel.send(`${message.author} Hey you can't auction this value!`).then((msg) => { 
+                        setTimeout(() => {
+                            msg.delete()
+                        }, 4000);
+                    });
+                    return;
+                }
+            }
             //// Need bid higher than current price + 100,000 coins
             let price = parseInt(content);
 

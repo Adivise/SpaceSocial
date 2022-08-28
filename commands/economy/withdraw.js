@@ -15,9 +15,29 @@ module.exports = {
     run: async (interaction, client) => {
         await interaction.deferReply({ ephemeral: false });
         const args = interaction.options.getString("amount");
+        
+        const filters = [
+            "+",
+            "-"
+        ];
+
+        for(const message in filters) {
+            if (args.includes(filters[message])) return interaction.editReply("You can't do that!");
+        }
+
         if(args != parseInt(args) && args != "all") return interaction.editReply("Please provide a valid amount or all");
 
         const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
+
+        if (user.money == 0) {
+            const embed = new EmbedBuilder()
+                .setColor(client.color)
+                .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
+                .setDescription(`You don't have enough money to withdraw.`)
+                .setTimestamp();
+
+            return interaction.editReply({ embeds: [embed] });
+        }
 
         if (args > user.bank) {
             const embed = new EmbedBuilder()
@@ -29,7 +49,7 @@ module.exports = {
             return interaction.editReply({ embeds: [embed] });
         }
 
-        if (args == 'all') { /// WITHDRAW ALL
+        if (args.toLowerCase() == 'all') { /// WITHDRAW ALL
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
