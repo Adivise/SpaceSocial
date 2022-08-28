@@ -30,21 +30,17 @@ module.exports = {
 
         const ticket = await Ticket.findOne({ guild_id: interaction.guild.id, user_id: mention });
 
-        const tickets = config.gacha.gacha_list;
-
-        const TotalTickets = (ticket.common_ticket + ticket.uncommon_ticket) + (ticket.rare_ticket + ticket.epic_ticket) + (ticket.legendary_ticket + ticket.mythical_ticket);
+        const TotalTickets = (ticket.three_star_ticket + ticket.four_star_ticket) + (ticket.five_star_ticket + ticket.six_star_ticket);
 
         const embed = new EmbedBuilder()
             .setColor(client.color)
             .setAuthor({ name: userTag, iconURL: avatarURL })
             .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
             .setDescription(`Use the \`/leaderboard\` command to view your rank.`)
-            .addFields({ name: `${tickets[0]}`, value: `\`${ticket.common_ticket} ⚪\``, inline: true })
-            .addFields({ name: `${tickets[1]}`, value: `\`${ticket.uncommon_ticket} 🟢\``, inline: true })
-            .addFields({ name: `${tickets[2]}`, value: `\`${ticket.rare_ticket} 🔵\``, inline: true })
-            .addFields({ name: `${tickets[3]}`, value: `\`${ticket.epic_ticket} 🟣\``, inline: true })
-            .addFields({ name: `${tickets[4]}`, value: `\`${ticket.legendary_ticket} 🟡\``, inline: true })
-            .addFields({ name: `${tickets[5]}`, value: `\`${ticket.mythical_ticket} 🔴\``, inline: true })
+            .addFields({ name: `3 ⭐`, value: `\`${ticket.three_star_ticket} 🔵\``, inline: true })
+            .addFields({ name: `4 ⭐`, value: `\`${ticket.four_star_ticket} 🟣\``, inline: true })
+            .addFields({ name: `5 ⭐`, value: `\`${ticket.five_star_ticket} 🟡\``, inline: true })
+            .addFields({ name: `6 ⭐`, value: `\`${ticket.six_star_ticket} 🔴\``, inline: true })
             .setFooter({ text: `Total Tickets: ${TotalTickets}`, iconURL: client.user.avatarURL({ format: "png", dynamic: true, size: 512 }) })
             .setTimestamp();
 

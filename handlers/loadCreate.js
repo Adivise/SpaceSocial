@@ -44,14 +44,12 @@ module.exports = async (client) => {
                 user_id: mention_id,
                 gacha_cooldown: 0,
                 gacha_cooldown_time: 2,
-                common_ticket: 0,
-                uncommon_ticket: 0,
-                rare_ticket: 0,
-                epic_ticket: 0,
-                legendary_ticket: 0,
-                mythical_ticket: 0,
-                guarantee_leg: 0,
-                guarantee_myth: 0,
+                three_star_ticket: 0,
+                four_star_ticket: 0,
+                five_star_ticket: 0,
+                six_star_ticket: 0,
+                guarantee_five_star: 0,
+                guarantee_six_star: 0,
             });
             await newTicket.save();
         }

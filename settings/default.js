@@ -2,17 +2,36 @@
 
 module.exports = {
     gacha: {
-        gacha_list: [ // You can't add more! (You can only rename!)
-            "Common", // 75%
-            "Uncommon", // 25%
-            "Rare", // 10%
-            "Epic", // 3%
-            "Legendary", // 0.5%
-            "Mythic", // 0.1%
-        ], 
-        gacha_price: 50000, //// 50,0000 to open gacha!
-        guarantee_1: 90, //// 90 guarantee round! to get legendary! and got reset went get legendary!
-        guarantee_2: 180, //// 180 guarantee round! to get mythical! and got reset went get mythical!
+        six_stars: [ // You can add more names if you want!
+            "Raiden Shotgun",
+            "Yea mike",
+            "Zhongloy"
+        ],
+        five_stars: [
+            "Gigi",
+            "Moanna",
+            "Kequiang",
+            "Niging",
+            "Ventoy"
+        ],
+        four_stars: [
+            "Elgejoy",
+            "Enballfing",
+            "Sec Sword",
+            "Sec Book",
+            "Sec Bow",
+        ],
+        three_stars: [
+            "Bull Blade",
+            "Deminus",
+            "Robux",
+            "BTMC",
+            "100pp",
+        ],
+        gacha_price_one_round: 50000, //// 50,000 to open gacha! x1
+        gacha_price_ten_round: 500000, /// 500,000 to open gacha! x10
+        guarantee_five_star: 90, //// 90 guarantee round! to get legendary! and got reset went get legendary!
+        guarantee_six_star: 180, //// 180 guarantee round! to get mythical! and got reset went get mythical!
     },
     auction: {
         role_list: [ // List role name your can sell!

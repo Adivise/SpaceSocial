@@ -106,13 +106,13 @@ module.exports = {
 
             /// Sort by Total Tickets
             user.sort((a, b) => {
-                return (b.common_ticket + b.uncommon_ticket) + (b.rare_ticket + b.epic_ticket) + (b.legendary_ticket + b.mythical_ticket) - (a.common_ticket + a.uncommon_ticket) + (a.rare_ticket + a.epic_ticket) + (a.legendary_ticket + a.mythical_ticket);
+                return (b.three_star_ticket + b.four_star_ticket) + (b.five_star_ticket + b.six_star_ticket) -  (a.three_star_ticket + a.four_star_ticket) + (a.five_star_ticket + a.six_star_ticket);
             });
 
             const userStrings = [];
             for (let i = 0; i < user.length; i++) {
                 const e = user[i];
-                const TotalTicket = (e.common_ticket + e.uncommon_ticket) + (e.rare_ticket + e.epic_ticket) + (e.legendary_ticket + e.mythical_ticket);
+                const TotalTicket =  (e.three_star_ticket + e.four_star_ticket) + (e.five_star_ticket + e.six_star_ticket);
                 const fetch = await client.users.fetch(e.user_id);
                 userStrings.push(
                     `**${i + 1}.** ${client.users.cache.get(fetch.id)} \`${TotalTicket} 🎫 Tickets\`
