@@ -354,7 +354,7 @@ module.exports = {
                 "-"
             ];
     
-            for(const message in filters) {
+            for (const message in filters) {
                 if (args.includes(filters[message])) return interaction.editReply("You can't do that!");
             }
 
@@ -364,16 +364,6 @@ module.exports = {
             if (!clan) return interaction.editReply("You are not the clan owner");
 
             const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
-            
-            if (user.money == 0) {
-                const embed = new EmbedBuilder()
-                    .setColor(client.color)
-                    .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                    .setDescription(`You don't have enough money to deposit.`)
-                    .setTimestamp();
-    
-                return interaction.editReply({ embeds: [embed] });
-            }
             
             if (args > user.money) {
                 const embed = new EmbedBuilder()
@@ -394,26 +384,25 @@ module.exports = {
     
                 interaction.editReply({ embeds: [embed] });
     
-                /// ALL BANK TO MONEY
                 clan.clan_money += user.money;
-                /// SET MONEY TO 0
                 user.money = 0;
-    
+
                 await user.save();
                 await clan.save();
             } else { /// DEPOSIT AMOUNT
                 clan.clan_money += parseInt(args);
                 user.money -= parseInt(args);
-                await user.save().then(() => {
-                    const embed = new EmbedBuilder()
-                        .setColor(client.color)
-                        .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                        .setDescription(`You have deposited \`$${numberWithCommas(args)}\` into your clan bank.`)
-                        .setTimestamp();
-    
-                    clan.save();
-                    return interaction.editReply({ embeds: [embed] });
-                });
+
+                const embed = new EmbedBuilder()
+                    .setColor(client.color)
+                    .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
+                    .setDescription(`You have deposited \`$${numberWithCommas(args)}\` into your clan bank.`)
+                    .setTimestamp();
+
+                interaction.editReply({ embeds: [embed] });
+
+                await user.save();
+                await clan.save();
             }
         }
         if (interaction.options.getSubcommand() === "withdraw") {
@@ -424,7 +413,7 @@ module.exports = {
                 "-"
             ];
     
-            for(const message in filters) {
+            for (const message in filters) {
                 if (args.includes(filters[message])) return interaction.editReply("You can't do that!");
             }
 
@@ -435,21 +424,11 @@ module.exports = {
 
             const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
 
-            if (user.money == 0) {
+            if (args > clan.clan_money) {
                 const embed = new EmbedBuilder()
                     .setColor(client.color)
                     .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                    .setDescription(`You don't have enough money to withdraw.`)
-                    .setTimestamp();
-    
-                return interaction.editReply({ embeds: [embed] });
-            }
-
-            if (args > user.money) {
-                const embed = new EmbedBuilder()
-                    .setColor(client.color)
-                    .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                    .setDescription(`You don't have enough money to withdraw this amount.`)
+                    .setDescription(`You clan don't have enough money to withdraw this amount.`)
                     .setTimestamp();
     
                 return interaction.editReply({ embeds: [embed] });
@@ -459,14 +438,12 @@ module.exports = {
                 const embed = new EmbedBuilder()
                     .setColor(client.color)
                     .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                    .setDescription(`You have withdraw \`$${numberWithCommas(user.money)}\` from your clan bank.`)
+                    .setDescription(`You have withdraw \`$${numberWithCommas(clan.clan_money)}\` from your clan bank.`)
                     .setTimestamp();
     
                 interaction.editReply({ embeds: [embed] });
-    
-                /// ALL BANK TO MONEY
+
                 user.money += clan.clan_money;
-                /// SET MONEY TO 0
                 clan.clan_money = 0;
     
                 await user.save();
@@ -474,16 +451,17 @@ module.exports = {
             } else { /// DEPOSIT AMOUNT
                 clan.clan_money -= parseInt(args);
                 user.money += parseInt(args);
-                await user.save().then(() => {
-                    const embed = new EmbedBuilder()
-                        .setColor(client.color)
-                        .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                        .setDescription(`You have withdraw \`$${numberWithCommas(args)}\` from your clan bank.`)
-                        .setTimestamp();
-    
-                    clan.save();
-                    return interaction.editReply({ embeds: [embed] });
-                });
+
+                const embed = new EmbedBuilder()
+                    .setColor(client.color)
+                    .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
+                    .setDescription(`You have withdraw \`$${numberWithCommas(args)}\` from your clan bank.`)
+                    .setTimestamp();
+
+                interaction.editReply({ embeds: [embed] });
+
+                await user.save();
+                await clan.save();
             }
         }
         if (interaction.options.getSubcommand() === "info") {

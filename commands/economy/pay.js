@@ -27,7 +27,7 @@ module.exports = {
             "-"
         ];
 
-        for(const message in filters) {
+        for (const message in filters) {
             if (args.includes(filters[message])) return interaction.editReply("You can't do that!");
         }
 
@@ -43,16 +43,6 @@ module.exports = {
         const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
         const target = await Member.findOne({ guild_id: interaction.guild.id, user_id: member.id });
 
-        if (user.money == 0) {
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                .setDescription(`You don't have enough money to pay.`)
-                .setTimestamp();
-
-            return interaction.editReply({ embeds: [embed] });
-        }
-
         if (args > user.money) {
             const embed = new EmbedBuilder()
                 .setColor(client.color)
@@ -64,38 +54,32 @@ module.exports = {
         }
 
         if (args.toLowerCase() == 'all') { /// PAY ALL
+            target.money += user.money;
+            user.money = 0;
+
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                .setDescription(`You have paid \`$${numberWithCommas(user.money)}\` to ${member}.`)
+                .setDescription(`You pay \`$${numberWithCommas(user.money)}\` to ${member}.`)
                 .setTimestamp();
 
             interaction.editReply({ embeds: [embed] });
 
-            /// SET YOUR MONEY TO TARGET MONEY
-            target.money += user.money;
             await target.save();
-
-            /// SET YOUR MONEY TO 0
-            user.money = 0;
             await user.save();
-        } 
+        } else { /// PAY AMOUNT
+            target.money += parseInt(args);
+            user.money -= parseInt(args);
 
-        if (args == parseInt(args)) { /// PAY AMOUNT
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                .setDescription(`You have paid \`$${numberWithCommas(args)}\` into ${member}.`)
+                .setDescription(`You pay \`$${numberWithCommas(args)}\` to ${member}.`)
                 .setTimestamp();
 
            interaction.editReply({ embeds: [embed] });
 
-            /// + TARGET MONEY
-            target.money += parseInt(args);
             await target.save();
-            
-            /// - YOUR MONEY
-            user.money -= parseInt(args);
             await user.save();
         }
     }
