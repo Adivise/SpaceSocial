@@ -54,9 +54,6 @@ module.exports = {
         }
 
         if (args.toLowerCase() == 'all') { /// PAY ALL
-            target.money += user.money;
-            user.money = 0;
-
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
@@ -64,6 +61,9 @@ module.exports = {
                 .setTimestamp();
 
             interaction.editReply({ embeds: [embed] });
+			
+			target.money += user.money;
+            user.money = 0;
 
             await target.save();
             await user.save();
@@ -77,7 +77,7 @@ module.exports = {
                 .setDescription(`You pay \`$${numberWithCommas(args)}\` to ${member}.`)
                 .setTimestamp();
 
-           interaction.editReply({ embeds: [embed] });
+			interaction.editReply({ embeds: [embed] });
 
             await target.save();
             await user.save();
