@@ -16,6 +16,7 @@ module.exports = async(client, interaction) => {
         /// Try to create new database went this member not have!
         await client.CreateAndUpdate(interaction.guild.id, interaction.user.id) /// Can find this module in Handlers/loadCreate.js
         await client.AuctionCreateAndUpdate(interaction.guild.id)
+        await client.Roulette(interaction.guild.id)
 
         if (!client.dev.includes(interaction.user.id) && client.dev.length > 0) { 
             interaction.reply(`You are not allowed to use this command.`); 
