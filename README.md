@@ -9,12 +9,12 @@
 ## 📑 Short Feature
 - [x] SlashCommands
 - [x] Economy System
-- [x] Roulette (inspired *UnbelievaBoat* bot)
+- [x] Roulette (inspired **UnbelievaBoat** bot)
 - [x] Clan System
 - [x] Marry System
-- [x] Gacha System (inspired *Genshin Impact*)
+- [x] Gacha System (inspired **Genshin Impact**)
 - [x] Auction System
-- [x] Dark Auction System (inspired Hypixel Skyblock)
+- [x] Dark Auction System (inspired **Hypixel Skyblock**)
 - [x] Shop System
 - [x] Can config all System
 - [x] Easy to use!
