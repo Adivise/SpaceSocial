@@ -9,10 +9,13 @@
 ## 📑 Short Feature
 - [x] SlashCommands
 - [x] Economy System
+- [x] Roulette (inspired **UnbelievaBoat** bot)
 - [x] Clan System
 - [x] Marry System
-- [x] Gacha System
+- [x] Gacha System (inspired **Genshin Impact**)
 - [x] Auction System
+- [x] Dark Auction System (inspired **Hypixel Skyblock**)
+- [x] Shop System
 - [x] Can config all System
 - [x] Easy to use!
 
@@ -95,11 +98,12 @@ MONGO_URI=mongodb://127.0.0.1:27017/spacesocial
 - `/clan buy update` - Buy a clan update (Need Clan Role)
 
 🟥 **Special Commands!** (Beta)
-- `/gacha` - Gacha and get a random ticket rarity (Use money to gacha)
+- `/gacha (x1 & x10)` - Gacha and get a random ticket rarity (Use money to gacha)
 - `/auction sell (role) (price)` - Sell a role
 - `/auction buy (user) (id)` - Buy a role
 - `/auction view ([global] - [user]) [page]` - View the auction
 - `/darkaction start (role) (price)` - Start a darkaction (Access Only for Admins)
+- `/shop (item)` - Buy item for you self!
 
 ## 📝 Credits
 Developed by [Adivise](https://github.com/Adivise)
