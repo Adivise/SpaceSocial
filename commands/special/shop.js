@@ -30,8 +30,10 @@ module.exports = {
 
         if (interaction.options.getSubcommand() === "buy") {
             const args = interaction.options.getString("item");
+            if(args != "work-speed" && args != "work-multiple" && args != "crime-speed" && args != "crime-multiple" && args != "rob-speed" && args != "rob") return interaction.editReply("Unknow item (Please type correct!)");
 
             const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
+
 
             if (args.toLowerCase() == "work-speed") {
                 if (user.work_cooldown_time < config.shop.max_work_cooldown_time) return interaction.editReply("You are already max reduce work cooldown"); {
@@ -114,8 +116,6 @@ module.exports = {
                 await user.save();
                 interaction.editReply("You have bought rob. You can now rob people.");
             }
-
-
         }
 
         if (interaction.options.getSubcommand() === "list") {

@@ -53,6 +53,16 @@ module.exports = {
             return interaction.editReply({ embeds: [embed] });
         }
 
+        if (user.money < -1) {
+            const embed = new EmbedBuilder()
+                .setColor(client.color)
+                .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
+                .setDescription(`You have are negative money!`)
+                .setTimestamp();
+
+            return interaction.editReply({ embeds: [embed] });
+        }
+
         if (args.toLowerCase() == 'all') { /// PAY ALL
             const embed = new EmbedBuilder()
                 .setColor(client.color)

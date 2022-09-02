@@ -2,6 +2,7 @@ const { Client } = require("discord.js");
 const Ticket = require("../settings/models/ticket.js");
 const Member = require("../settings/models/member.js");
 const DarkAuction = require("../settings/models/darkauction.js");
+const Roulette = require("../settings/models/roulette.js");
 const config = require("../settings/default.js");
   
   /**
@@ -71,6 +72,22 @@ module.exports = async (client) => {
                 history: [],
             });
             await newAuction.save();
+        }
+    }
+
+    client.Roulette = async function (guildId) {
+        const roulette = await Roulette.findOne({ guild_id: guildId });
+        if (!roulette) {
+            const newRoulette = await new Roulette({
+                guild_id: guildId,
+                roulette: false,
+                history: [],
+                space: [],
+                data: [],
+                time_remaining: 30,
+                time: 0,
+            });
+            await newRoulette.save();
         }
     }
 }
