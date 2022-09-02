@@ -30,6 +30,18 @@ module.exports = {
         const args = interaction.options.getInteger("bet");
         if (args < config.general.roulette_start) return interaction.editReply(`You can't bet less than \`$${numberWithCommas(config.general.roulette_start)}\``);
 
+        const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
+
+        if (args > user.money) {
+            const embed = new EmbedBuilder()
+                .setColor(client.color)
+                .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
+                .setDescription(`You don't have enough money to bet this amount.`)
+                .setTimestamp();
+
+            return interaction.editReply({ embeds: [embed] });
+        }
+
         const space = interaction.options.getString("space");
         const embed = new EmbedBuilder()
             .setColor(client.color)
@@ -65,18 +77,6 @@ module.exports = {
                 return interaction.editReply({ content: "Type is not valid. Number (0-36)" });
             }
         } else {
-            return interaction.editReply({ embeds: [embed] });
-        }
-
-        const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
-
-        if (args > user.money) {
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                .setDescription(`You don't have enough money to bet this amount.`)
-                .setTimestamp();
-
             return interaction.editReply({ embeds: [embed] });
         }
     }
