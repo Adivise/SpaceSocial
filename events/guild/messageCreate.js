@@ -5,4 +5,5 @@ module.exports = async(client, message) => {
         await client.CreateAndUpdate(message.guild.id, message.author.id) /// Can find this module in Handlers/loadCreate.js
         await client.AuctionCreateAndUpdate(message.guild.id)
         await client.Roulette(message.guild.id)
+        await client.Coinflip(message.guild.id)
 }

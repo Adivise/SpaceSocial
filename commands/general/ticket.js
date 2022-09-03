@@ -37,11 +37,11 @@ module.exports = {
             .setAuthor({ name: userTag, iconURL: avatarURL })
             .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
             .setDescription(`Use the \`/leaderboard\` command to view your rank.`)
-            .addFields({ name: `3 ⭐`, value: `\`${ticket.three_star_ticket} 🔵\``, inline: true })
-            .addFields({ name: `4 ⭐`, value: `\`${ticket.four_star_ticket} 🟣\``, inline: true })
-            .addFields({ name: `5 ⭐`, value: `\`${ticket.five_star_ticket} 🟡\``, inline: true })
-            .addFields({ name: `6 ⭐`, value: `\`${ticket.six_star_ticket} 🔴\``, inline: true })
-            .setFooter({ text: `Total Tickets: ${TotalTickets}`, iconURL: client.user.avatarURL({ format: "png", dynamic: true, size: 512 }) })
+            .addFields({ name: `3 \`⭐\``, value: `\`${ticket.three_star_ticket} 🔵\``, inline: true })
+            .addFields({ name: `4 \`⭐\``, value: `\`${ticket.four_star_ticket} 🟣\``, inline: true })
+            .addFields({ name: `5 \`⭐\``, value: `\`${ticket.five_star_ticket} 🟡\``, inline: true })
+            .addFields({ name: `6 \`⭐\``, value: `\`${ticket.six_star_ticket} 🔴\``, inline: true })
+            .setFooter({ text: `• Total Tickets: ${TotalTickets}`})
             .setTimestamp();
 
         return interaction.editReply({ embeds: [embed] });

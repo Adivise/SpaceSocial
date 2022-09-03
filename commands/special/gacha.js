@@ -218,7 +218,7 @@ module.exports = {
             .setColor(client.color)
             .setAuthor({ name: "Result Open x10", iconURL: interaction.user.avatarURL({ dynamic: true }) })
             .setDescription(str == "" ? " Nothing" : "\n" + str)
-            .setFooter({ text: `Guarantee (5 Star ${config.gacha.guarantee_five_star - ticket.guarantee_five_star}) & (6 Star ${config.gacha.guarantee_six_star - ticket.guarantee_six_star})` });
+            .setFooter({ text: `• Guarantee 5 Star ${config.gacha.guarantee_five_star - ticket.guarantee_five_star} | 6 Star ${config.gacha.guarantee_six_star - ticket.guarantee_six_star}` });
 
             pages.push(embed);
         }

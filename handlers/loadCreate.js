@@ -3,6 +3,7 @@ const Ticket = require("../settings/models/ticket.js");
 const Member = require("../settings/models/member.js");
 const DarkAuction = require("../settings/models/darkauction.js");
 const Roulette = require("../settings/models/roulette.js");
+const Coinflip = require("../settings/models/coinflip.js");
 const config = require("../settings/default.js");
   
   /**
@@ -34,6 +35,9 @@ module.exports = async (client) => {
                 married: false,
                 rank: "Newbie",
                 reputation: 0,
+                facebook: "",
+                instagram: "",
+                twitter: "",
             });
             await newDatabase.save();
         }
@@ -88,6 +92,22 @@ module.exports = async (client) => {
                 time: 0,
             });
             await newRoulette.save();
+        }
+    }
+
+    client.Coinflip = async function (guildId) {
+        const coinflip = await Coinflip.findOne({ guild_id: guildId });
+        if (!coinflip) {
+            const newCoinflip = await new Coinflip({
+                guild_id: guildId,
+                coinflip: false,
+                history: [],
+                space: "",
+                data: [],
+                time_remaining: 30,
+                time: 0,
+            });
+            await newCoinflip.save();
         }
     }
 }

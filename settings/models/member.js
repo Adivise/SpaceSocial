@@ -20,6 +20,9 @@ const CreateMember = new mongoose.Schema({
     married: Boolean,
     rank: String,
     reputation: Number,
+    facebook: String,
+    instagram: String,
+    twitter: String,
 });
 
 module.exports = mongoose.model("Member", CreateMember);

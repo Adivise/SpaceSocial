@@ -5,8 +5,6 @@ const { EmbedBuilder, ApplicationCommandOptionType } = require("discord.js");
 const config = require("../../settings/default.js");
 const delay = require("delay");
 
-////// ROULETTE IS NOT FINNAL CODE I HAVE A PLAN TO UPDATE NEXT TIME
-
 module.exports = { 
     name: "roulette",
     description: "Play the roulette game.",
@@ -36,13 +34,15 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-                .setDescription(`You don't have enough money to bet this amount.`)
+                .setDescription(`You don't have enough money.`)
                 .setTimestamp();
 
             return interaction.editReply({ embeds: [embed] });
         }
 
-        const space = interaction.options.getString("space");
+        const string = interaction.options.getString("space");
+        const space = string.toLowerCase();
+        
         const embed = new EmbedBuilder()
             .setColor(client.color)
             .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
@@ -107,7 +107,7 @@ async function runRoulette(interaction, space, args, client) {
         const embed = new EmbedBuilder()
             .setColor(client.color)
             .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-            .setDescription(`You have place a bet of \`$${numberWithCommas(args)}\` on the \`${space}\` space.`)
+            .setDescription(`You have place a bet of \`$${numberWithCommas(args)}\` on \`${space}\``)
             .setFooter({ text: `Time remaining: ${time_format}` });
 
         interaction.editReply({ embeds: [embed] });
@@ -135,7 +135,7 @@ async function runRoulette(interaction, space, args, client) {
         const embed = new EmbedBuilder()
             .setColor(client.color)
             .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL({ dynamic: true }) })
-            .setDescription(`You have place a bet of \`$${numberWithCommas(args)}\` on the \`${space}\` space.`)
+            .setDescription(`You have place a bet of \`$${numberWithCommas(args)}\` on \`${space}\``)
             .setFooter({ text: `Time remaining: 30 seconds` });
 
         interaction.editReply({ embeds: [embed] });

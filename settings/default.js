@@ -70,10 +70,13 @@ module.exports = {
 
         // Rob Command!
         rob_cooldown_time: 3600,
-        rob_chance: 50,
+        rob_chance: 50, // when you rob fail you lose same target money (You have 100 coin you rob 100,000 coin but you lose here -50,000)
 
         // Roulette Command!
         roulette_start: 100,
+
+        // Coinflip Command!
+        coinflip_start: 100,
 
         // Vote Command!
         vote_cooldown_time: 3600,
@@ -130,5 +133,10 @@ module.exports = {
         rob_reduce_cost: 100000, // Rob reduce cost!
         reduce_rob_cooldown: 10, // Reduce 10s every buy
         max_rob_cooldown_time: 999, // Max reduce rob cooldown time!
+    },
+    exchange: {
+        three_to_four: 10, // Example need 10 | 3 star exchange to 1 | 4 star 
+        four_to_five: 10, 
+        five_to_six: 10, 
     }
 }
