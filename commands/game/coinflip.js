@@ -62,6 +62,10 @@ async function runCoinflip(interaction, space, args, client) {
     if (db.coinflip) {
         // True
 
+        if(data.time_limit < Date.now()) {
+            return interaction.editReply(`You can't bet, you run out of time.`);
+        }
+
         /// Save History bets
         await betSave(interaction.guild.id, space, args, interaction.user.id);
 
@@ -97,7 +101,7 @@ async function runCoinflip(interaction, space, args, client) {
         const data = await Coinflip.findOne({ guild_id: interaction.guild.id });
 
         if (data.time == 0) {
-            await Coinflip.findOneAndUpdate({ guild_id: interaction.guild.id }, { time: Date.now() + (data.time_remaining * 1000) });
+            await Coinflip.findOneAndUpdate({ guild_id: interaction.guild.id }, { time: Date.now() + (data.time_remaining * 1000), time_limit: Date.now() + (25 * 1000) });
         }
 
         await Coinflip.findOneAndUpdate({ guild_id: interaction.guild.id }, { coinflip: true });

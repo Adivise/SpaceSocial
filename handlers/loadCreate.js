@@ -90,6 +90,7 @@ module.exports = async (client) => {
                 data: [],
                 time_remaining: 30,
                 time: 0,
+                time_limit: 0,
             });
             await newRoulette.save();
         }
@@ -106,6 +107,7 @@ module.exports = async (client) => {
                 data: [],
                 time_remaining: 30,
                 time: 0,
+                time_limit: 0,
             });
             await newCoinflip.save();
         }
