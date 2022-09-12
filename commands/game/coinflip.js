@@ -61,6 +61,8 @@ async function runCoinflip(interaction, space, args, client) {
     const db = await Coinflip.findOne({ guild_id: interaction.guild.id });
     if (db.coinflip) {
         // True
+		
+		const data = await Coinflip.findOne({ guild_id: interaction.guild.id });
 
         if(data.time_limit < Date.now()) {
             return interaction.editReply(`You can't bet, you run out of time.`);
@@ -71,8 +73,6 @@ async function runCoinflip(interaction, space, args, client) {
 
         /// Remove Money
         await revMoney(interaction.guild.id, interaction.user.id, args);
-
-        const data = await Coinflip.findOne({ guild_id: interaction.guild.id });
 
         const cooldown = new Date(data.time);
         const time = new Date(cooldown - new Date());
