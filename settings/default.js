@@ -5,14 +5,31 @@ module.exports = {
         six_stars: [ // You can add more names if you want!
             "Raiden Shotgun",
             "Yea mike",
-            "Zhongloy"
+            "Zhongloy",
+            "Xiao",
+            "Zhongli",
+            "Eren yeager",
+            "Gojo",
+            "Levi",
+            "Ablaze",
+            "Raiden"
         ],
         five_stars: [
             "Gigi",
             "Moanna",
             "Kequiang",
             "Niging",
-            "Ventoy"
+            "Ventoy",
+            "Osamu",
+            "Goku",
+            "Megumi",
+            "Kaneki",
+            "Sungjin",
+            "Akeno",
+            "Sukuna",
+            "Manjiro",
+            "Kazuha",
+            "Baki"
         ],
         four_stars: [
             "Elgejoy",
@@ -20,6 +37,21 @@ module.exports = {
             "Sec Sword",
             "Sec Book",
             "Sec Bow",
+            "Hatsune",
+            "Rias",
+            "Denji",
+            "Itsuki",
+            "Arataki",
+            "Shikimori",
+            "Sasuke",
+            "Itachi",
+            "Saitama",
+            "Albedo",
+            "Ayonokuouji",
+            "Baji",
+            "Akame",
+            "Keqing",
+            "Natsu"  
         ],
         three_stars: [
             "Bull Blade",
@@ -27,6 +59,26 @@ module.exports = {
             "Robux",
             "BTMC",
             "100pp",
+            "Obito",
+            "Kirito",
+            "Akaza",
+            "Obnai",
+            "Lisa",
+            "Hasuna",
+            "Vanitas",
+            "Shoyo",
+            "Asta",
+            "Kiyotaka",
+            "Raphtalia",
+            "Madara",
+            "Tobio",
+            "Ichigo",
+            "Kanao",
+            "Dabi",
+            "Jinx",
+            "Muzan",
+            "Paimon",
+            "Minato"
         ],
         gacha_price_one_round: 50000, //// 50,000 to open gacha! x1
         gacha_price_ten_round: 500000, /// 500,000 to open gacha! x10
@@ -133,6 +185,12 @@ module.exports = {
         rob_reduce_cost: 100000, // Rob reduce cost!
         reduce_rob_cooldown: 10, // Reduce 10s every buy
         max_rob_cooldown_time: 999, // Max reduce rob cooldown time!
+        
+        uncommon_role_cost: 200000, //money needed to buy role from shop
+        common_role_cost: 500000, //money needed to buy role from shop
+        rare_role_cost: 1000000, //money needed to buy role from shop
+        epic_role_cost: 1500000, //money needed to buy role from shop
+        
     },
     exchange: {
         three_to_four: 10, // Example need 10 | 3 star exchange to 1 | 4 star 
