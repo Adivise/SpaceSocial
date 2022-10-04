@@ -30,7 +30,7 @@ module.exports = {
 
         if (interaction.options.getSubcommand() === "buy") {
             const args = interaction.options.getString("item");
-            if(args != "work-speed" && args != "work-multiple" && args != "crime-speed" && args != "crime-multiple" && args != "rob-speed" && args != "rob") return interaction.editReply("Unknow item (Please type correct!)");
+            if(args != "work-speed" && args != "uncommon" && args != "rare" && args != "epic" && args != "common" && args != "work-multiple" && args != "crime-speed" && args != "crime-multiple" && args != "rob-speed" && args != "rob") return interaction.editReply("Unknow item (Please type correct!)");
 
             const user = await Member.findOne({ guild_id: interaction.guild.id, user_id: interaction.user.id });
 
@@ -106,6 +106,71 @@ module.exports = {
                     return;
                 }
             }
+            
+            if (args.toLowerCase() == "common") {
+                    if (user.money < config.shop.common_role_cost) return interaction.editReply(`You need ${numberWithCommas(config.shop.common_role_cost)} coins to buy.`);
+            
+                    user.money -= config.shop.common_role_cost;
+            
+          const CommonRole = client.guilds.cache.get(interaction.guild.id).roles.cache.find(r => r.name === "Common");
+          
+          await interaction.member.roles.add(CommonRole);
+          await user.save();
+          const embed = new EmbedBuilder()
+        .setDescription(`Successfully Bought Common Role!`)
+        .setColor(client.color);
+        
+        await interaction.editReply({ embeds: [embed] });
+            }
+            if (args.toLowerCase() == "uncommon") {
+                    if (user.money < config.shop.uncommon_role_cost) return interaction.editReply(`You need ${numberWithCommas(config.shop.uncommon_role_cost)} coins to buy.`);
+            
+                    user.money -= config.shop.uncommon_role_cost;
+            
+          const UncommonRole = client.guilds.cache.get(interaction.guild.id).roles.cache.find(r => r.name === "Uncommon");
+          
+          await interaction.member.roles.add(UncommonRole);
+          await user.save();
+          const embed = new EmbedBuilder()
+        .setDescription(`Successfully Bought UnCommon Role <:zzz_KaamKiBaat:671741467756331019>`)
+        .setColor(client.color);
+        
+        await interaction.editReply({ embeds: [embed] });
+            }
+            
+            if (args.toLowerCase() == "rare") {
+                    if (user.money < config.shop.rare_role_cost) return interaction.editReply(`You need ${numberWithCommas(config.shop.rare_role_cost)} coins to buy.`);
+            
+                    user.money -= config.shop.rare_role_cost;
+            
+          const RareRole = client.guilds.cache.get(interaction.guild.id).roles.cache.find(r => r.name === "Rare");
+          
+          await interaction.member.roles.add(RareRole);
+          await user.save();
+          const embed = new EmbedBuilder()
+        .setDescription(`Successfully Bought Rare Role!`)
+        .setColor(client.color);
+        
+        await interaction.editReply({ embeds: [embed] });
+            }
+
+            if (args.toLowerCase() == "epic") {
+                    if (user.money < config.shop.epic_role_cost) return interaction.editReply(`You need ${numberWithCommas(config.shop.epic_role_cost)} coins to buy.`);
+            
+                    user.money -= config.shop.epic_role_cost;
+            
+          const EpicRole = client.guilds.cache.get(interaction.guild.id).roles.cache.find(r => r.name === "Epic");
+          
+          await interaction.member.roles.add(EpicRole);
+          await user.save();
+          
+                const embed = new EmbedBuilder()
+        .setDescription(`Successfully Bought Epic Role!`)
+        .setColor(client.color);
+        
+        await interaction.editReply({ embeds: [embed] });
+            }
+            
 
             if (args.toLowerCase() == "rob") {
                 if (user.money < config.shop.rob_cost) return interaction.editReply(`You need ${numberWithCommas(config.shop.rob_cost)} coins to buy.`);
