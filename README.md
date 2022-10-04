@@ -107,4 +107,6 @@ MONGO_URI=mongodb://127.0.0.1:27017/spacesocial
 - `/shop (item)` - Buy item for you self!
 
 ## 📝 Credits
-Developed by [Adivise](https://github.com/Adivise) [A A D I](https://github.com/AADI0009)
+Developed by 
+[Adivise](https://github.com/Adivise) 
+[A A D I](https://github.com/AADI0009)
