@@ -194,6 +194,10 @@ module.exports = {
                 \`crime-multiple\` - ${numberWithCommas(config.shop.crime_multiple_cost)} coins - Increase crime money multiple by x${config.shop.crime_multiple}.
                 \`rob\` - ${numberWithCommas(config.shop.rob_cost)} coins - Buy rob.
                 \`rob-speed\` - ${numberWithCommas(config.shop.rob_reduce_cost)} coins - Reduce rob cooldown by ${config.shop.reduce_rob_cooldown} seconds.
+                \`rare\` - ${numberWithCommas(config.shop.rare_role_cost)} coins - Buy rare role.
+                \`epic\` - ${numberWithCommas(config.shop.epic_role_cost)} coins - Buy epic role.
+                \`common\` - ${numberWithCommas(config.shop.common_role_cost)} coins - Buy common role.
+                \`uncommon\` - ${numberWithCommas(config.shop.uncommon_role_cost)} coins - Buy uncommon role.
                 `)
                 .setTimestamp();
 
