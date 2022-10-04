@@ -57,7 +57,7 @@ module.exports = {
     ],
     run: async (interaction, client) => {
         await interaction.deferReply({ ephemeral: false });
-
+        if (!interaction.member.permissions.has('ManageGuild')) return interaction.editReply("You need the **MANAGE_GUILD** permission!"); {
         if (interaction.options.getSubcommand() === "give") {
             const args = interaction.options.getInteger("amount");
     
@@ -105,8 +105,8 @@ module.exports = {
         }
 
     }
+    }
 }
-
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
