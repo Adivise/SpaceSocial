@@ -65,7 +65,7 @@ module.exports = {
                 target.money -= lostmoney;
                 await target.save();
             } else {
-                const lostmoney = Math.floor(target.money / 2);
+                const lostmoney = Math.floor(user.money / 2);
 
                 const embed = new EmbedBuilder()
                     .setColor(client.color)
