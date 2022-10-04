@@ -14,6 +14,7 @@
 - [x] Marry System
 - [x] Gacha System (inspired **Genshin Impact**)
 - [x] Auction System
+- [x] Buy roles from shop
 - [x] Dark Auction System (inspired **Hypixel Skyblock**)
 - [x] Shop System
 - [x] Can config all System
