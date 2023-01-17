@@ -2,10 +2,7 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({
     shards: 'auto',
-    allowedMentions: {
-        parse: ["roles", "users", "everyone"],
-        repliedUser: false
-    },
+    allowedMentions: { parse: ["users", "roles"] },
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
